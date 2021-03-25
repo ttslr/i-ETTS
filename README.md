@@ -1,2 +1,2 @@
-# RLESS
-Emotional Speech Synthesis (ESS) System
+# I-ETTS
+Interactive Emotional Text-to-Speech (ETTS) Synthesis System
