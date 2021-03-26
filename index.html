@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta name="google-site-verification" content="ftFOlJETX-2KNjaPh8W6s8lhigItRuu9fOmjHZZ0nY0" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+ 
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() { 
+            //展开表格
+            $("#foldtable").click(function() {
+                var txt = $(this).text();
+                if(txt == "[Unfold]") {
+                    $(this).text("[Fold]");
+                    $(".m-table1").find(".hidetable").css("display", "table-row");
+                } else {
+                    $(this).text("[Unfold]");
+                    $(".m-table1").find(".hidetable").css("display", "none");
+                }
+            })
+        });
+        
+    </script>
+ 
+
+  <title>i-ETTS</title>
+</head>
+<style type="text/css">
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  audio {
+    width: 100%;
+  }
+
+  thead>tr>th:first-child {
+    width: 96px;
+  }
+
+  @media (max-width: 767px) {
+    .big-screen {
+      display: none;
+    }
+  }
+
+  @media (min-width: 767px) {
+    .small-screen {
+      display: none;
+    }
+  }
+</style>
+
+
+
+
+<body>
+  <header class="header">
+    <div class="jumbotron bg-secondary text-center">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+ 
+            <h1><a class="text-light">Reinforcement Learning for Emotional Text-to-Speech Synthesis with Improved Emotion Discriminability</h1><br> 
+             <font size=5><span style="color:#000000"> Authors: Rui Liu, Berrak Sisman, Haizhou Li </font>  </a>   
+            <p>
+              <div class="row">
+              </div>
+            </p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row" id="result">
+        <div class="col-md-12">
+        	<h5>Abstract:</h5> 
+        	Emotional text-to-speech synthesis (ETTS) has seen much progress in recent years. However, the generated voice is often not expressive enough due to the confusion of emotion category. To address this problem, we propose a new interactive training paradigm for ETTS, denoted as <i>i-ETTS</i>, which seeks to directly improve the emotion discriminability by interacting with a speech emotion recognition (SER) model. Moreover, we formulate an iterative training strategy with reinforcement learning to ensure the quality of <i>i-ETTS</i> optimization. Experimental results demonstrate that the proposed <i>i-ETTS</i> outperforms the state-of-the-art baselines by rendering speech with more accurate emotion style. To our best knowledge, this is the first study of reinforcement learning in emotional text-to-speech synthesis. <br>
+<br>
+<br>
+          <div style="text-align: center; width: 1100px; border: green solid 1px;">
+          	<img align="center" src="model.jpg"  width="800" height="330"  />
+ 				<br>
+        <br>
+                    Fig. 1: Block diagram of the proposed interactive paradigm for emotional text-to-speech synthesis with reinforcement learning.
+                    
+          </div>
+ 
+
+                
+
+      <br><br><br>
+
+          
+                     <br>
+                     
+                   
+                  <div class="big-screen">
+                    <br>
+                    We implement two baseline systems together with the proposed <i>i-ETTS</i>, as summarized next.:
+                    <br>
+                    <br>
+                    <b> 1. MTL-ETTS  <font color='blue'>[1]</font> </b>: A GST-based emotional TTS model that jointly trains an auxiliary SER task with the TTS model;
+                    <br><br>
+                    <b> 2. CET-ETTS <font color='blue'>[2]</font></b>: A GST-based emotional TTS model that uses two reference encoders with SER module and perceptual loss to enhance the emotion-discriminative ability.
+                  <br><br>
+                    <b> 3. i-ETTS </b>: the proposed <i>i-ETTS</i> that optimizes the ETTS model with a reward function correlated with the SER accuracy.
+                     
+                     <br>
+
+
+                   
+                     <br /><br />
+                     <h3>Synthesized audios:</h3>
+                     <br />
+                     <br />
+                    <!--  Naturalness Evaluation -->
+                    <div id="div_sxjbxx" class="m-table1">
+                    <table class="table">
+                      
+                      <tbody>
+                                
+                                
+                                <tr>
+                                    
+                                    <th>[Emotion]</th>
+                                     <th></th>
+                                    <th style="text-align:center;">   MTL-ETTS</th>
+                                    <th style="text-align:center;">   CET-ETTS </th>
+                                    <th style="text-align:center;">   I-ETTS</th>
+                                    
+                                </tr>
+                                 
+                              
+
+                             <!--    <tr>
+                                  <th colspan=5 align="center"><font color='blue'>[1] We conduct objective evaluations to assess the performance of our proposed framework. </font></th>
+                                </tr> -->
+
+                                 <tr>
+                                  
+                                  <th scope="row">  Neutral   </th>
+                                  <th scope="row">  01 <br> (Speaker: 0020) </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/2_Neutral.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/2_Neutral.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/2_Neutral.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+
+                                  <tr>
+                                    <th scope="row">    </th>
+                                   <th scope="row">  02 <br> (Speaker: 0013)   </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/13_Neutral.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/13_Neutral.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/13_Neutral.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+                                   <tr>
+                                  <th scope="row">    </th>
+                                  <th scope="row">  03 <br> (Speaker: 0012)  </th>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/15_Neutral.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/15_Neutral.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/15_Neutral.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+
+
+                                   <tr>
+                                  
+                                  <th scope="row">  Happy   </th>
+                                  <th scope="row">  01 <br> (Speaker: 0018)   </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/7_Happy.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/7_Happy.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/7_Happy.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+
+                                  <tr>
+                                    <th scope="row">    </th>
+                                   <th scope="row">  02 <br> (Speaker: 0016)   </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/10_Happy.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/10_Happy.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/10_Happy.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+                                   <tr>
+                                  <th scope="row">    </th>
+                                  <th scope="row">  03 <br> (Speaker: 0012)  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/14_Happy.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/14_Happy.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/14_Happy.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+
+
+
+
+                                   <tr>
+                                  
+                                  <th scope="row">  Sad   </th>
+                                  <th scope="row">  01 <br> (Speaker: 0019)   </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/3_Sad.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/3_Sad.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/3_Sad.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+
+                                  <tr>
+                                    <th scope="row">    </th>
+                                   <th scope="row">  02 <br> (Speaker: 0018)   </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/6_Sad.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/6_Sad.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/6_Sad.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+                                   <tr>
+                                  <th scope="row">    </th>
+                                  <th scope="row">  03 <br> (Speaker: 0014)  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/12_Sad.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/12_Sad.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/12_Sad.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+
+
+
+
+                                   <tr>
+                                  
+                                  <th scope="row">  Surprise   </th>
+                                  <th scope="row">  01  <br> (Speaker: 0018)  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/5_Surprise.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/5_Surprise.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/5_Surprise.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+
+                                  <tr>
+                                    <th scope="row">    </th>
+                                   <th scope="row">  02 <br> (Speaker: 0017)   </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/8_Surprise.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/8_Surprise.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/8_Surprise.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+                                   <tr>
+                                  <th scope="row">    </th>
+                                  <th scope="row">  03 <br> (Speaker: 0014)  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/11_Surprise.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/11_Surprise.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/11_Surprise.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+
+
+
+                                   <tr>
+                                  
+                                  <th scope="row">  Angry   </th>
+                                  <th scope="row">  01 <br> (Speaker: 0020)   </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/1_Angry.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/1_Angry.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/1_Angry.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+
+                                  <tr>
+                                    <th scope="row">    </th>
+                                   <th scope="row">  02 <br> (Speaker: 0019)   </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/4_Angry.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/4_Angry.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/4_Angry.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+                                   <tr>
+                                  <th scope="row">    </th>
+                                  <th scope="row">  03 <br> (Speaker: 0017)  </th>
+                                <td>
+                                    <audio controls>
+                                      <source src="samples2/1-MTL-ESS/9_Angry.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/2-CET-ESS/9_Angry.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="samples2/3-RLESS/9_Angry.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+ 
+
+                      </tbody>
+                    </table>
+                    <!--
+                    <div class="f-tac mg-t2 mg-b2">
+                        <div id="foldtable" class="foldbtn"><font color=blue>[Unfold]</font></div>
+                    </div>
+                    !-->
+
+
+
+
+  
+                  <br /><br />
+                     <h3>Audio samples from training dataset:</h3>
+                     <br />
+
+                   <table class="table" style="line-height:6px;" border=1>
+                      
+                      <tbody>
+                                <tr>
+                                    <th>[Speaker]</th>
+                                    <th>Neutral</th>
+                                    <th>Happy</th>
+                                    <th>Sad</th>
+                                    <th>Surprise</th>
+                                    <th>Angry</th>
+                                </tr>
+                                <tr>
+                                  <th scope="row">  0011   [Male] </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0011/0011_000314.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0011/0011_001036.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0011/0011_001208.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0011/0011_001750.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0011/0011_000499.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  0012    [Male] </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0012/0012_000118.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0012/0012_000871.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0012/0012_001212.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0012/0012_001574.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0012/0012_000656.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  0013   [Male] </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0013/0013_000202.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0013/0013_000766.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0013/0013_001108.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0013/0013_001646.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0013/0013_000564.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  0014   [Male] </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0014/0014_000067.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0014/0014_000701.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0014/0014_001379.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0014/0014_001423.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0014/0014_000503.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  0015  [Female]  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0015/0015_000341.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0015/0015_000816.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0015/0015_001077.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0015/0015_001711.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0015/0015_000369.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  0016   [Female]  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0016/0016_000171.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0016/0016_000818.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0016/0016_001290.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0016/0016_001509.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0016/0016_000617.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  0017  [Female]  </th>
+                                <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0017/0017_000280.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0017/0017_000900.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0017/0017_001161.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0017/0017_001607.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0017/0017_000519.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  0018   [Female]  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0018/0018_000236.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0018/0018_000752.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0018/0018_001114.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0018/0018_001672.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0018/0018_000578.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  0019   [Female]  </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0019/0019_000104.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0019/0019_000886.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0019/0019_001226.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0019/0019_001568.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0019/0019_000662.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+                                  <tr>
+                                  <th scope="row">  0020   [Male] </th>
+                                 <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0020/0020_000294.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0020/0020_000928.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0020/0020_001149.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0020/0020_001613.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                   <td>
+                                    <audio controls>
+                                      <source src="ESD-sample/0020/0020_000531.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  </tr>
+
+</tbody>
+</table>
+
+
+
+
+
+                  </div>
+ 
+
+                  </div>
+                 
+        </div>
+      </div>
+      <hr>
+       <div class="row" id="ref">
+        <div class="col">
+          <h5>References</h5>
+    
+          [1] Cai, Xiong, et al. "Emotion controllable speech synthesis using emotion-unlabeled dataset with the assistance of cross-domain speech emotion recognition." To appear at ICASSP 2021.
+          <br>
+          [2] Li, Tao, et al. "Controllable Emotion Transfer For End-to-End Speech Synthesis." 12th International Symposium on Chinese Spoken Language Processing (ISCSLP). IEEE, pp: 1-5, 2021. 
+
+          <br>
+        
+        
+        </div>
+      </div>
+      <!--<hr>
+      <div class="row" id="contact">
+          <div class="col">
+            <h2>Contact</h2>
+            <div></div>
+          </div>
+        </div> -->
+    </div>
+  </main>
+  <footer class="bg-secondary text-light mt-4 pt-3 pb-2 ">
+    <div class="container">
+      <p class="text-center">
+        
+      </p>
+    </div>
+  </footer>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
