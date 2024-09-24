@@ -14,11 +14,7 @@ This paper was accepted by **InterSpeech2021**.
 
 Speech samples are available at [demo page](https://ttslr.github.io/i-ETTS/).
 
-
-
-Bibtext:
-
-
+ 
 
 ## Citing
 To cite this repository:
