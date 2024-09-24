@@ -1,5 +1,5 @@
 # i-ETTS
-[Interactive Emotional Text-to-Speech (ETTS) Synthesis System](https://www.isca-archive.org/interspeech_2021/liu21p_interspeech.pdf)
+[Reinforcement Learning for Emotional Text-to-Speech Synthesis with Improved Emotion Discriminability](https://www.isca-archive.org/interspeech_2021/liu21p_interspeech.pdf)
 
 Authors: Rui Liu, Berrak Sisman and Haizhou Li
 
