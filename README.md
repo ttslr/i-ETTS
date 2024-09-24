@@ -6,6 +6,9 @@ Authors: Rui Liu, Berrak Sisman and Haizhou Li
 
 This paper was accepted by InterSpeech2021. 
 
+[paper link](https://www.isca-archive.org/interspeech_2021/liu21p_interspeech.pdf)
+
+
 ## Speech samples
 
 
@@ -15,6 +18,11 @@ Speech samples are available at [demo page](https://ttslr.github.io/i-ETTS/).
 
 Bibtext:
 
+
+
+## Citing
+To cite this repository:
+```bibtex
 @inproceedings{liu21p_interspeech,
   title     = {Reinforcement Learning for Emotional Text-to-Speech Synthesis with Improved Emotion Discriminability},
   author    = {Rui Liu and Berrak Sisman and Haizhou Li},
@@ -24,3 +32,5 @@ Bibtext:
   doi       = {10.21437/Interspeech.2021-1236},
   issn      = {2958-1796},
 }
+
+```
