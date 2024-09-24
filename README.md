@@ -4,9 +4,23 @@ Interactive Emotional Text-to-Speech (ETTS) Synthesis System
 
 Authors: Rui Liu, Berrak Sisman and Haizhou Li
 
-This paper was submitted to InterSpeech2021. 
+This paper was accepted by InterSpeech2021. 
 
 ## Speech samples
 
 
 Speech samples are available at [demo page](https://ttslr.github.io/i-ETTS/).
+
+
+
+Bibtext:
+
+@inproceedings{liu21p_interspeech,
+  title     = {Reinforcement Learning for Emotional Text-to-Speech Synthesis with Improved Emotion Discriminability},
+  author    = {Rui Liu and Berrak Sisman and Haizhou Li},
+  year      = {2021},
+  booktitle = {Interspeech 2021},
+  pages     = {4648--4652},
+  doi       = {10.21437/Interspeech.2021-1236},
+  issn      = {2958-1796},
+}
